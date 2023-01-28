@@ -46,7 +46,7 @@ cout<<"after :";
     //     else
     //         a = a;
     // }
-    // cout << endl;
+    cout << endl;
     // cout << a;
 
     return 0;
