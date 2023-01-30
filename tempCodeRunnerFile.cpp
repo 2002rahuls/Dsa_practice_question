@@ -1,2 +1,3 @@
- // for (int i = 0; i < count; i++)
-    // {
+for(int j=n-s;j<n;j++){
+//     t[g]=0;
+// }
