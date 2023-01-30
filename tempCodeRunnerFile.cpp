@@ -1,3 +1,4 @@
-for(int j=n-s;j<n;j++){
-//     t[g]=0;
-// }
+for(auto it:freq){
+//     cout<<it.first<<"  "<<it.second<<endl;
+//   }
+// cout<<"***************************************"<<endl;
