@@ -25,7 +25,7 @@ using namespace std;
 }
 
 int main(){
-    int a[]={-1,-1,-1,1,1,1};
+    int a[]={-1,-2,-3,1,2,3};
     wineSelling(a,6);
 
 
