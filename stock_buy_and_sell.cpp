@@ -15,7 +15,7 @@ void stockBuySell(int price[], int n)
         while ((i < n) && (price[i] >= price[i - 1]))
             i++;
         sell.push_back(i - 1);
-        cnt++;
+        cnt++; // cnt=cnt+1
    }
     if (cnt == 0)
         cout << "No Profit";
