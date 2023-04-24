@@ -1,0 +1,132 @@
+// BFS-----------------------------------------------------------------------------------
+#include <iostream>
+#include <queue>
+#include <vector>
+using namespace std;
+
+vector<vector<int>> adj_list; // adjacency list of the graph
+vector<bool> visited; // to keep track of visited nodes
+
+void bfs(int start_node) {
+    queue<int> q;
+    q.push(start_node);
+    visited[start_node] = true;
+
+    while (!q.empty()) {
+        int curr_node = q.front();
+        q.pop();
+        cout << curr_node << " ";
+
+        // visit all neighbors of the current node
+        for (int neighbor : adj_list[curr_node]) {
+            if (!visited[neighbor]) {
+                q.push(neighbor);
+                visited[neighbor] = true;
+            }
+        }
+    }
+}
+
+int main() {
+    // initialize graph
+    int num_nodes, num_edges;
+    cin >> num_nodes >> num_edges;
+    adj_list.resize(num_nodes);
+    visited.resize(num_nodes);
+
+    // build adjacency list
+    for (int i = 0; i < num_edges; i++) {
+        int u, v;
+        cin >> u >> v;
+        adj_list[u].push_back(v);
+        adj_list[v].push_back(u); // undirected graph
+    }
+
+    // perform BFS starting from node 0
+    bfs(0);
+
+    return 0;
+}
+
+
+// DFS------------------------------------------------------------------------------------------------------------------
+#include <iostream>
+#include <vector>
+using namespace std;
+
+vector<vector<int>> adj_list; // adjacency list of the graph
+vector<bool> visited; // to keep track of visited nodes
+
+void dfs(int curr_node) {
+    visited[curr_node] = true;
+    cout << curr_node << " ";
+
+    // visit all neighbors of the current node
+    for (int neighbor : adj_list[curr_node]) {
+        if (!visited[neighbor]) {
+            dfs(neighbor);
+        }
+    }
+}
+
+int main() {
+    // initialize graph
+    int num_nodes, num_edges;
+    cin >> num_nodes >> num_edges;
+    adj_list.resize(num_nodes);
+    visited.resize(num_nodes);
+
+    // build adjacency list
+    for (int i = 0; i < num_edges; i++) {
+        int u, v;
+        cin >> u >> v;
+        adj_list[u].push_back(v);
+        adj_list[v].push_back(u); // undirected graph
+    }
+
+    // perform DFS starting from node 0
+    dfs(0);
+
+    return 0;
+}
+
+
+// MINIMAX----------------------------------------------------------------------------------------------------
+#include <iostream>
+using namespace std;
+
+int minmax(bool maximizer, int finalStates[], int l, int r)
+{
+    if (l == r)
+    {
+        return finalStates[l];
+    }
+
+    int mid = (l + r) / 2;
+
+    if (Maximizer)
+    {
+        return max(minmax(false, finalStates, l, mid), minmax(false, finalStates, mid + 1, r));
+    }
+
+    return min(minmax(true, finalStates, l, mid), minmax(true, finalStates, mid + 1, r));
+}
+
+int main()
+{
+    int n;
+    cout << "Enter the number of final states N, where ( N = 2^x ) :";
+    cin >> n;
+    cout << "Enter the final states : \n";
+    int finalStates[n];
+    for (int i = 0; i < n; i++)
+    {
+        cin >> finalStates[i];
+    }
+
+    int ans = minmax(true, finalStates, 0, n - 1);
+
+    cout << " Best The Maximizer can get : " << ans << endl;
+
+    return 0;
+}
