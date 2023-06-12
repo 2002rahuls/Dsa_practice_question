@@ -2,8 +2,9 @@
 using namespace std;
 
 bool comp(pair<int,int> a,pair<int,int> b){
-    return b>a;
-}
+    if(a.second==b.second) return a.first<b.first;
+    else return a.second>b.second;
+}       
 
 int main(){
     cout<<"start"<<endl;
@@ -21,7 +22,7 @@ int main(){
     for(auto it: mp){
         v.push_back(it);
     }
-
+    
     // for(auto x: v){
     //     cout<<x.first<<" "<<x.second<< endl;
     // }
